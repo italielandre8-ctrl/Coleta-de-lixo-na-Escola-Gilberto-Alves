@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coleta de Lixo — Escola Gilberto Alves</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>
+    <span class="brand-icon">♻️</span>
+    <div class="brand">
+      <strong>Missão Escola Limpa</strong>
+      <small>Escola Gilberto Alves</small>
+    </div>
+  </div>
+
+  <div class="profile-mini">
+    <span id="levelBadge">Nível 1</span>
+    <b id="pointsTop">0 ⭐</b>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div>
+    <p class="eyebrow">🌱 SUA ATITUDE TRANSFORMA</p>
+
+    <h1>Vamos deixar nossa escola mais limpa?</h1>
+
+    <p>
+      Complete a missão do dia, conquiste pontos
+      e troque suas recompensas na loja.
+    </p>
+
+    <button class="primary" onclick="scrollToMission()">
+      Ver missão de hoje ↓
+    </button>
+  </div>
+
+  <div class="hero-art">
+    🌎<br>
+    <span>+♻️</span>
+  </div>
+</section>
+
+
+<section class="stats">
+
+  <article>
+    <span>⭐</span>
+    <b id="points">0</b>
+    <small>Pontos</small>
+  </article>
+
+  <article>
+    <span>🏆</span>
+    <b id="level">Nível 1</b>
+    <small>Seu nível</small>
+  </article>
+
+  <article>
+    <span>🔥</span>
+    <b id="streak">0</b>
+    <small>Dias seguidos</small>
+  </article>
+
+  <article>
+    <span>🗑️</span>
+    <b id="collections">0</b>
+    <small>Coletas</small>
+  </article>
+
+</section>
+
+
+<section id="mission" class="card mission-card">
+
+  <div class="section-title">
+
+    <div>
+      <p class="eyebrow">📅 MISSÃO DE HOJE</p>
+      <h2 id="dayTitle">Carregando...</h2>
+    </div>
+
+    <span class="points-pill">+50 ⭐</span>
+
+  </div>
+
+
+  <div class="mission-place">
+
+    <div class="place-icon" id="placeIcon">📍</div>
+
+    <div>
+      <h3 id="placeName">...</h3>
+      <p id="placeDescription">...</p>
+    </div>
+
+  </div>
+
+
+  <div class="progress-box">
+
+    <div>
+      <span>Progresso da missão</span>
+      <b id="progressText">0%</b>
+    </div>
+
+    <div class="progress">
+      <i id="progressBar"></i>
+    </div>
+
+  </div>
+
+
+  <button
+    class="primary full"
+    id="collectBtn"
+    onclick="finishCollection()"
+  >
+    🗑️ Finalizar coleta
+  </button>
+
+  <p class="done" id="doneMessage"></p>
+
+</section>
+
+
+<section class="card">
+
+  <div class="section-title">
+
+    <div>
+      <p class="eyebrow">🗺️ LOCAIS</p>
+      <h2>Conheça as áreas de coleta</h2>
+    </div>
+
+  </div>
+
+  <div class="locations" id="locations"></div>
+
+</section>
+
+
+<section class="card">
+
+  <div class="section-title">
+
+    <div>
+      <p class="eyebrow">🛍️ RECOMPENSAS</p>
+
+      <h2>Loja da Escola</h2>
+
+      <p>
+        Use seus pontos para desbloquear recompensas.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="shop" id="shop"></div>
+
+</section>
+
+
+<section class="card">
+
+  <div class="section-title">
+
+    <div>
+      <p class="eyebrow">🏆 RANKING</p>
+      <h2>Guardiões da Escola</h2>
+    </div>
+
+  </div>
+
+  <div class="ranking">
+
+    <div>
+      <span>🥇</span>
+      <b>Maria</b>
+      <strong>850 ⭐</strong>
+    </div>
+
+    <div>
+      <span>🥈</span>
+      <b>João</b>
+      <strong>720 ⭐</strong>
+    </div>
+
+    <div class="you">
+      <span>🥉</span>
+      <b>Você</b>
+      <strong id="rankingPoints">0 ⭐</strong>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="card">
+
+  <div class="section-title">
+
+    <div>
+      <p class="eyebrow">🎖️ CONQUISTAS</p>
+      <h2>Seus desafios</h2>
+    </div>
+
+  </div>
+
+  <div class="achievements">
+
+    <div id="achievementFirst" class="achievement locked">
+      🗑️
+      <b>Primeira coleta</b>
+      <small>Faça sua primeira coleta</small>
+    </div>
+
+    <div id="achievementThree" class="achievement locked">
+      🔥
+      <b>Constância</b>
+      <small>Complete 3 coletas</small>
+    </div>
+
+    <div id="achievementWeek" class="achievement locked">
+      🌎
+      <b>Guardião da Escola</b>
+      <small>Complete 5 coletas</small>
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<div class="modal" id="successModal">
+
+  <div class="modal-box">
+
+    <div class="success-icon">🎉</div>
+
+    <h2>MISSÃO CONCLUÍDA!</h2>
+
+    <div class="earned">+50 ⭐</div>
+
+    <p class="conscious">
+      🌱
+      <span id="consciousPhrase"></span>
+    </p>
+
+    <p class="small">
+      Sua atitude ajuda a construir uma escola
+      mais limpa, saudável e sustentável.
+    </p>
+
+    <button
+      class="primary full"
+      onclick="closeModal()"
+    >
+      Continuar ♻️
+    </button>
+
+  </div>
+
+</div>
+
+
+<footer>
+
+  <p>
+    ♻️ <b>Missão Escola Limpa</b>
+    — Escola Gilberto Alves
+  </p>
+
+  <small>
+    Projeto educativo de conscientização ambiental.
+  </small>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+    </html>
